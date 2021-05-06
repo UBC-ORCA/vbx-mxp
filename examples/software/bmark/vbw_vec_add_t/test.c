@@ -111,20 +111,17 @@ int main(void)
 	vbx_mm_t *vector_in1 = vbx_shared_malloc( N*sizeof(vbx_mm_t) );
 	vbx_mm_t *vector_in2 = vbx_shared_malloc( N*sizeof(vbx_mm_t) );
 	vbx_mm_t *vector_out = vbx_shared_malloc( N*sizeof(vbx_mm_t) );
-//	vbx_mm_t *vector_out = vector_in2 - 5;
-
 
 	vbx_sp_t *v_in1 = vbx_sp_malloc( N*sizeof(vbx_sp_t) );
 	vbx_sp_t *v_in2 = vbx_sp_malloc( N*sizeof(vbx_sp_t) );
 	vbx_sp_t *v_out = vbx_sp_malloc( N*sizeof(vbx_sp_t) );
-//	vbx_sp_t *v_out = v_in2-5;
 
 	VBX_T(test_zero_array)( scalar_out, N );
 	VBX_T(test_zero_array)( vector_out, N );
 
 	VBX_T(test_init_array)( scalar_in1, N, 1 );
 	VBX_T(test_copy_array)( vector_in1, scalar_in1, N );
-	VBX_T(test_init_array)( scalar_in2, N, 1 );
+	VBX_T(test_init_array)( scalar_in2, N, 2 );
 	VBX_T(test_copy_array)( vector_in2, scalar_in2, N );
 
 	VBX_T(test_print_array)( scalar_in1, PRINT_LENGTH );
@@ -134,7 +131,7 @@ int main(void)
 	VBX_T(test_print_array)( scalar_out, PRINT_LENGTH);
 
 	vbx_dma_to_vector( v_in1, (void *)vector_in1, N*sizeof(vbx_sp_t) );
-	vbx_dma_to_vector( v_in2, (void *)vector_in1, N*sizeof(vbx_sp_t) );
+	vbx_dma_to_vector( v_in2, (void *)vector_in2, N*sizeof(vbx_sp_t) );
 	test_vector( v_out, v_in1, v_in2, N, scalar_time );
 	vbx_dma_to_host( (void *)vector_out, v_out, N*sizeof(vbx_sp_t) );
 	vbx_sync();
