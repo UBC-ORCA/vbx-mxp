@@ -1,3 +1,6 @@
+
+UPDATE: VectorBlox was aquired by Microchip in September, 2019. This repository was forked from the last known publicly available repository, and is now considered the official source. Although RTL for the VectorBlox MXP engine is encrypted, you should be able to build it on Xilinx and Intel/Altera systems and create your own custom instructions. All software for the MXP is under the Berkeley 3-clause open source license. Pull requests for bug fixes are welcome. For significant changes, please contact Guy Lemieux (lemieux@ece.ubc.ca).
+
 VectorBlox MXP
 ================
 
